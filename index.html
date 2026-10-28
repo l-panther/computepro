@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>ComputePro — PC Hardware &amp; OS Companion</title>
+<meta name="description" content="PC hardware component reference, architecture explained, and diagnostic/troubleshooting guides." />
+<meta name="theme-color" content="#142E52" /><link rel="icon" type="image/svg+xml" href="./icon.svg" />
+<link rel="manifest" href="./manifest.json" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='36' fill='%23142E52'/%3E%3Crect x='40' y='50' width='112' height='78' rx='6' stroke='%23fff' stroke-width='8' fill='none'/%3E%3Cline x1='30' y1='142' x2='162' y2='142' stroke='%23fff' stroke-width='8' stroke-linecap='round'/%3E%3Ccircle cx='96' cy='89' r='16' stroke='%23fff' stroke-width='6' fill='none'/%3E%3C/svg%3E" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="ComputePro" />
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./pro-academy-nav.css">
+<link rel="stylesheet" href="./academy-dashboard.css">
+</head>
+<body>
+
+<!-- ================= HOME ================= -->
+<div class="view active" id="view-home">
+<div class="master-hero"><div class="hero-copy"><span class="hero-kicker">HARDWARE • SYSTEMS • TROUBLESHOOTING</span><h1>Understand the machine.<br><em>Master the system.</em></h1><p>From your first PC build to advanced diagnosis — interactive lessons, diagrams, labs and tools in one companion.</p><div class="hero-actions"><button class="primary-cta" onclick="startLearning()">Start learning <span class="arrow-icon">→</span></button><button class="secondary-cta" onclick="showView('guides',null,'push')">Explore guides <span class="arrow-icon">↗</span></button></div></div></div>  <div class="wrap">
+    <section class="academy-dashboard" aria-label="Learning dashboard">
+      <div class="academy-progress"><span class="academy-kicker">YOUR LEARNING JOURNEY</span><h2>Build your computer knowledge</h2><p>Keep track of the lessons and Masterclass chapters you complete.</p><div class="academy-metric"><strong id="academyDone">0</strong><span>lessons completed on this device</span></div><div class="academy-meter"><span id="academyMeterFill"></span></div></div>
+      <div class="academy-continue"><span class="academy-kicker">CONTINUE LEARNING</span><h2 id="academyResumeTitle">Start with PC fundamentals</h2><p id="academyResumeText">Understand the components that make a computer work.</p><button id="academyResumeBtn" onclick="startLearning()">Start learning →</button></div>
+    </section>
+    <section class="academy-paths" aria-label="Learning paths"><div class="academy-path-heading"><span class="academy-kicker">GUIDED LEARNING</span><h2>Choose your learning path</h2></div><div class="academy-path-grid">
+      <button class="academy-path" onclick="showView('components',null,'push')"><span class="academy-icon">▣</span><strong>Hardware essentials</strong><span>Processors, memory, storage and motherboards</span><small>Explore components →</small></button>
+      <button class="academy-path" onclick="showView('guides',null,'push')"><span class="academy-icon">⌘</span><strong>Systems &amp; operating systems</strong><span>Architecture, boot processes and software foundations</span><small>Browse guides →</small></button>
+      <button class="academy-path" onclick="openCategory('diagnostics')"><span class="academy-icon">✚</span><strong>Diagnostics &amp; repair</strong><span>Identify faults and troubleshoot with confidence</span><small>Explore diagnostics →</small></button>
+    </div></section>
+    <div class="section-head"><div><p class="section-label">YOUR WORKSPACE</p><h2>Explore the essentials</h2></div><span class="section-note">Choose a path</span></div>
+    <div class="quick-grid">
+      <button class="quick-card" onclick="showView('components',null,'push')">
+        <span class="icon-badge" style="background:var(--slate);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
+        </span>
+        <h3>Components</h3>
+        <p>CPU, RAM, motherboard, storage and more.</p>
+      </button>
+
+      <button class="quick-card" onclick="showView('guides',null,'push')">
+        <span class="icon-badge" style="background:var(--navy);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22.5"/><path d="M4 4.5v16"/></svg>
+        </span>
+        <h3>Guides</h3>
+        <p>Architecture, operating systems, building &amp; upgrading.</p>
+      </button>
+
+      <button class="quick-card" onclick="openCategory('diagnostics')">
+        <span class="icon-badge" style="background:var(--red);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+        </span>
+        <h3>Diagnostics</h3>
+        <p>No POST, BSOD, overheating, and more \u2014 all in one place.</p>
+      </button>
+
+      <button class="quick-card" onclick="openComponent('motherboard')">
+        <span class="icon-badge" style="background:var(--teal);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M15 3v6h6"/></svg>
+        </span>
+        <h3>Popular</h3>
+        <p>Motherboard \u2014 form factors, sockets &amp; data routes.</p>
+      </button>
+    </div>
+
+    <div class="deep-home-cta"><div><span>COMPUTEPRO MASTERCLASS</span><h2>10 comprehensive chapters · 30 lessons</h2><p>Explore hardware, operating systems, security, networking and advanced troubleshooting.</p></div><button onclick="openDeep()">Open Masterclass →</button></div><div class="section-head"><div><p class="section-label">REFERENCE LIBRARY</p><h2>Inside your computer</h2></div><button class="text-link" onclick="showView('components',null,'push')">View all →</button></div>
+    <div id="homeComponentsList"></div><div class="section-head"><div><p class="section-label">PRACTICE</p><h2>Learn by doing</h2></div></div><div class="feature-grid"><button class="feature-card" onclick="showView('lab',null,'push')"><span class="feature-emoji">⌘</span><h3>Interactive workbench</h3><p>Explore the boot sequence, power budgeting and memory planning.</p><span class="feature-link">Open workbench →</span></button><button class="feature-card" onclick="showView('study',null,'push')"><span class="feature-emoji">◎</span><h3>Study & test</h3><p>Knowledge checks, progress tracking, saved notes and practical tasks.</p><span class="feature-link">Start studying →</span></button></div>
+  </div>
+</div>
+
+<!-- ================= COMPONENTS LIST ================= -->
+<div class="view" id="view-components">
+  <div class="sub-header">
+    <button class="sub-back" onclick="showView('home',null,'pop')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="sub-header-text">
+      <p class="eyebrow">COMPUTEPRO</p>
+      <h2>Components</h2>
+    </div>
+  </div>
+  <div class="wrap" id="componentsListWrap"></div>
+</div>
+
+<!-- ================= COMPONENT DETAIL ================= -->
+<div class="view" id="view-component-detail">
+  <div class="sub-header">
+    <button class="sub-back" onclick="showView('components',null,'pop')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="sub-header-text">
+      <p class="eyebrow">COMPONENT</p>
+      <h2 id="componentDetailTitle"></h2>
+    </div>
+  </div>
+  <div class="detail-wrap" id="componentDetailContent"></div>
+</div>
+
+<!-- ================= GUIDE CATEGORIES ================= -->
+<div class="view" id="view-guides">
+  <div class="sub-header">
+    <button class="sub-back" onclick="showView('home',null,'pop')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="sub-header-text">
+      <p class="eyebrow">COMPUTEPRO</p>
+      <h2>Guides</h2>
+    </div>
+  </div>
+  <div class="wrap" id="categoriesListWrap"></div>
+</div>
+
+<!-- ================= TOPIC LIST ================= -->
+<div class="view" id="view-category">
+  <div class="sub-header">
+    <button class="sub-back" onclick="showView('guides',null,'pop')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="sub-header-text">
+      <p class="eyebrow">GUIDES</p>
+      <h2 id="categoryTitle"></h2>
+    </div>
+  </div>
+  <div class="wrap" id="categoryContent"></div>
+</div>
+
+<!-- ================= TOPIC DETAIL ================= -->
+<div class="view" id="view-topic">
+  <div class="sub-header">
+    <button class="sub-back" id="topicBackBtn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <div class="sub-header-text">
+      <p class="eyebrow" id="topicEyebrow">GUIDE</p>
+      <h2 id="topicTitle"></h2>
+    </div>
+  </div>
+  <div class="detail-wrap" id="topicContent"></div>
+</div>
+
+
+<div class="view" id="view-search"><div class="sub-header"><button class="sub-back" onclick="showView('home',null,'pop')" aria-label="Back">‹</button><div class="sub-header-text"><p class="eyebrow">FIND ANYTHING</p><h2>Search the library</h2></div></div><div class="wrap"><label class="field-label" for="globalSearch">Search components, categories and lessons</label><input id="globalSearch" class="master-input" type="search" placeholder="Try: RAM, boot, overheating…" oninput="renderSearch()"/><div id="searchResults" class="search-results"></div></div></div>
+<div class="view" id="view-lab"><div class="sub-header"><button class="sub-back" onclick="showView('home',null,'pop')" aria-label="Back">‹</button><div class="sub-header-text"><p class="eyebrow">INTERACTIVE</p><h2>PC Workbench</h2></div></div><div class="wrap"><div class="lab-intro"><span class="pill">3 LIVE TOOLS</span><h2>Experiment without risking hardware.</h2><p>Adjust the values and follow the system diagrams to understand what happens inside a PC.</p></div><div class="lab-card"><h3>01 · PC power planner</h3><p>Estimate system draw and PSU headroom. These are planning estimates, not measurements.</p><div class="lab-fields"><label>CPU peak power (W)<input id="cpuWatts" type="number" min="0" max="1000" value="125" oninput="updateLab()"></label><label>GPU peak power (W)<input id="gpuWatts" type="number" min="0" max="1000" value="220" oninput="updateLab()"></label><label>Other components (W)<input id="otherWatts" type="number" min="0" max="500" value="65" oninput="updateLab()"></label><label>Headroom (%)<input id="headroom" type="number" min="0" max="100" value="30" oninput="updateLab()"></label></div><div class="result-panel" id="powerResult" aria-live="polite"></div></div><div class="lab-card"><h3>02 · Memory capacity planner</h3><p>Estimate the minimum memory for a workload. Check motherboard slot count, capacity and CPU support before buying.</p><div class="lab-fields"><label>Number of modules<input id="ramModules" type="number" min="1" max="8" value="2" oninput="updateLab()"></label><label>GB per module<input id="ramEach" type="number" min="1" max="128" value="16" oninput="updateLab()"></label></div><div class="result-panel" id="ramResult" aria-live="polite"></div></div><div class="lab-card"><h3>03 · Follow the boot sequence</h3><p>Click each stage to learn its job and where troubleshooting begins.</p><div class="boot-flow" id="bootFlow"></div><div class="result-panel" id="bootResult" aria-live="polite"></div></div></div></div>
+<div class="view" id="view-study"><div class="sub-header"><button class="sub-back" onclick="showView('home',null,'pop')" aria-label="Back">‹</button><div class="sub-header-text"><p class="eyebrow">MASTERCLASS</p><h2>Study Centre</h2></div></div><div class="wrap"><div class="lab-intro"><span class="pill">YOUR LEARNING JOURNEY</span><h2>Build confidence, one topic at a time.</h2><p>Check understanding, complete practical exercises and track lessons on this device.</p><div id="studyProgress"></div></div><div class="lab-card"><h3>Knowledge check</h3><div id="quizBox"></div></div><div class="lab-card"><h3>Practice checklist</h3><div id="practiceBox"></div></div><div class="lab-card"><h3>My study notes</h3><p>Notes are stored locally in this browser, not synced across devices.</p><textarea class="master-input notes-input" id="studyNotes" placeholder="Record troubleshooting steps, new terms, useful reminders…" oninput="saveNotes()"></textarea><span class="save-hint" id="saveHint">Saved on this device</span></div></div></div>
+<div class="view" id="view-deep"><div class="sub-header"><button class="sub-back" onclick="showView('home',null,'pop')" aria-label="Back">‹</button><div class="sub-header-text"><p class="eyebrow">COMPUTEPRO ACADEMY</p><h2>Complete Masterclass</h2></div></div><main class="wrap"><div class="lab-intro"><span class="pill">10 CHAPTERS · 30 EXTENDED LESSONS</span><h2>Learn the hardware. Understand the system.</h2><p>Detailed principles, real-world examples, practical exercises, troubleshooting, and personal study notes.</p><p id="deepProgress" class="deep-progress"></p></div><label class="field-label" for="deepSearch">Search the curriculum</label><input id="deepSearch" class="master-input" type="search" placeholder="Search CPU, storage, boot, security..." oninput="renderDeep()"><div class="deep-backup"><button onclick="exportDeep()">Export progress</button><label>Import progress <input type="file" accept="application/json,.json" onchange="importDeep(this.files[0])"></label></div><div id="deepModules"></div></main></div><div class="view" id="view-deep-lesson"><div class="sub-header"><button class="sub-back" onclick="openDeep()" aria-label="Back to Masterclass">‹</button><div class="sub-header-text"><p class="eyebrow">MASTERCLASS LESSON</p><h2 id="deepLessonTitle"></h2></div></div><main class="detail-wrap" id="deepLessonBody"></main><p class="deep-note-status" id="deepNoteStatus" aria-live="polite"></p></div>
+<!-- ================= TOOLBAR ================= -->
+<div class="app-toolbar">
+  <button class="tab-btn active" id="tabHome" onclick="showView('home',null,'pop')">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/></svg>
+    Home
+  </button>
+  <button class="tab-btn" id="tabComponents" onclick="showView('components',null,'push')">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+    Components
+  </button>
+  <button class="tab-btn" id="tabGuides" onclick="showView('guides',null,'push')">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22.5"/></svg>
+    Guides
+  </button>
+  <button class="tab-btn" id="tabSearch" onclick="showView('search',null,'push')"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>Search</button><button class="tab-btn" id="tabStudy" onclick="showView('study',null,'push')"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 3 8l9 5 9-5-9-5ZM5 11v6c4 3 10 3 14 0v-6"/></svg>Study</button>
+</div>
+
+<script src="./app.js" defer></script>
+
+</body>
+</html>

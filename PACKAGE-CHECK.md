@@ -1,0 +1,1 @@
+ComputePro complete app package. All relative src/href and CSS url() file references verified to exist. All JavaScript syntax checked. Includes unified Pro Academy bottom navigation. No browser functional testing performed.
