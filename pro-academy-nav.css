@@ -1,7 +1,7 @@
 /* Shared Pro Academy navigation v1 — identical in all four apps.
    Per-app destinations remain unchanged. */
 :root{--pro-nav-navy:#142e52;--pro-nav-accent:#e6a34c}
-.view{padding-bottom:calc(125px + env(safe-area-inset-bottom))!important}
+.view{padding-bottom:80px !important;
 .app-toolbar{
   position:fixed!important;z-index:1000!important;
   left:50%!important;right:auto!important;
